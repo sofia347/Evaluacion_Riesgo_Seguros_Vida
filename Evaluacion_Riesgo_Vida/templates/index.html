@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluación de Riesgo</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        form { margin-bottom: 20px; }
+        input, select { margin: 5px; padding: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Evaluación de Riesgo de Clientes</h1>
+
+    <!-- Formulario para agregar un nuevo cliente -->
+    <form action="/" method="post">
+        <label>Nombre: <input type="text" name="nombre" required></label>
+        <label>Edad: <input type="number" name="edad" required></label>
+        <label>Salud: 
+            <select name="salud">
+                <option value="saludable">Saludable</option>
+                <option value="diabetes">Diabetes</option>
+                <option value="hipertension">Hipertensión</option>
+            </select>
+        </label>
+        <label>Historial Familiar: 
+            <select name="historial_familiar">
+                <option value="false">No</option>
+                <option value="true">Sí</option>
+            </select>
+        </label>
+        <label>Estilo de Vida: 
+            <select name="estilo_vida">
+                <option value="activo">Activo</option>
+                <option value="sedentario">Sedentario</option>
+                <option value="fumador">Fumador</option>
+                <option value="alcoholico">Alcohólico</option>
+            </select>
+        </label>
+        <label>Ocupación: 
+            <select name="ocupacion">
+                <option value="oficina">Oficina</option>
+                <option value="piloto">Piloto</option>
+                <option value="bombero">Bombero</option>
+                <option value="minero">Minero</option>
+            </select>
+        </label>
+	<p>
+        <label>Historial Seguro: 
+            <select name="historial_seguro">
+                <option value="bueno">Bueno</option>
+                <option value="reclamos_frecuentes">Reclamos Frecuentes</option>
+            </select>
+        </label>
+        <button type="submit">Agregar Cliente</button>
+    </form>
+
+    <!-- Tabla de clientes -->
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Salud</th>
+            <th>Historial Familiar</th>
+            <th>Estilo de Vida</th>
+            <th>Ocupación</th>
+            <th>Historial Seguro</th>
+            <th>Nivel de Riesgo</th>
+        </tr>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.edad }}</td>
+            <td>{{ cliente.salud }}</td>
+            <td>{{ cliente.historial_familiar }}</td>
+            <td>{{ cliente.estilo_vida }}</td>
+            <td>{{ cliente.ocupacion }}</td>
+            <td>{{ cliente.historial_seguro }}</td>
+            <td>{{ cliente.riesgo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
